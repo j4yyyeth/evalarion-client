@@ -1,26 +1,11 @@
-"use client"
-
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Link from "next/link";
 
 const Home = () => {
-  const [ data, setData ] = useState<string>('');
-  const fetchData = async () => {
-    try {
-      const testData = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/test/one`);
-      setData(testData.data);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
   return (
     <>
       <h1>Home Page</h1>
-      <h2>{data}</h2>
+      <br />
+      <Link href="signup">Get Started Today!</Link>
     </>
   );
 };
