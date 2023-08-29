@@ -1,11 +1,18 @@
 "use client";
 
-// TODO: SSR the dashboard except for the interactive components
+/*
+
+TODO: 
+- SSR the dashboard except for the interactive components
+- Separate each api call into components ie Leetcode, Github, etc
+
+*/
 
 import { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { BiLogoGithub } from "react-icons/bi";
+import Select from "react-select";
 
 type LeetCodeData = {
   totalSolved: number;
@@ -46,6 +53,18 @@ const Dashboard = () => {
     console.log(githubResults.data);
   };
 
+  const handleLanguageSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("FORM SUBMITTED");
+  };
+
+  const options = [
+    { value: "html", label: "HTML" },
+    { value: "css", label: "CSS" },
+    { value: "javascript", label: "JAVASCRIPT" },
+    { value: "python", label: "PYTHON" },
+  ];
+
   // TODO: Loop through all repos: count stars and grab language
   // https://api.github.com/users/j4yyyeth/repos
 
@@ -70,27 +89,40 @@ const Dashboard = () => {
       </form>
       <h1>Dashboard</h1>
       <div className="p-5 max-h-screen w-screen">
-      <h1>LEETCODE:</h1>
-      <SiLeetcode size={50} />
-      <div className="max-h-screen overflow-auto">
-        {leetCodeContents && (
-          <pre className="whitespace-pre-wrap">
-            {JSON.stringify(leetCodeContents, null, 2)}
-          </pre>
-        )}
+        <h1>LEETCODE:</h1>
+        <SiLeetcode size={50} />
+        <div className="max-h-screen overflow-auto">
+          {leetCodeContents && (
+            <pre className="whitespace-pre-wrap">
+              {JSON.stringify(leetCodeContents, null, 2)}
+            </pre>
+          )}
+        </div>
       </div>
-    </div>
-    <div className="p-5 max-h-screen w-screen">
-      <h1>GITHUB:</h1>
-      <BiLogoGithub size={50} />
-      <div className="max-h-screen overflow-auto">
-        {githubContents && (
-          <pre className="whitespace-pre-wrap">
-            {JSON.stringify(githubContents, null, 2)}
-          </pre>
-        )}
+      <div className="p-5 max-h-screen w-screen">
+        <h1>GITHUB:</h1>
+        <BiLogoGithub size={50} />
+        <div className="max-h-screen overflow-auto">
+          {githubContents && (
+            <pre className="whitespace-pre-wrap">
+              {JSON.stringify(githubContents, null, 2)}
+            </pre>
+          )}
+        </div>
       </div>
-    </div>
+      <form
+        onSubmit={handleLanguageSubmit}
+        className="p-5 max-h-screen w-screen"
+      >
+        {/* <h1>LANGUAGES</h1>
+        <select name="language">
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="Javascript">JavaScript</option>
+        </select>
+        <button type="submit">Submit</button> */}
+        <Select options={options} />
+      </form>
     </div>
   );
 };
