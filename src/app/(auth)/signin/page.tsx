@@ -8,7 +8,6 @@ const SignIn = () => {
     password: "",
   });
   const handleChange = (e: any) => {
-    e.preventDefault();
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -17,6 +16,10 @@ const SignIn = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("FORM: ", form);
+    setForm({
+      email: "",
+      password: "",
+    })
   };
   return (
     <>
@@ -24,18 +27,18 @@ const SignIn = () => {
         <input
           type="email"
           name="email"
+          value={form.email}
           placeholder="Email"
-          required
           onChange={handleChange}
         ></input>
         <input
           type="password"
           name="password"
+          value={form.password}
           placeholder="Password"
-          required
           onChange={handleChange}
         ></input>
-        <button type="submit">Sign In</button>
+        <button type="submit">Enter</button>
       </form>
     </>
   );
