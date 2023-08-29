@@ -4,32 +4,33 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
-import { SiLeetcode } from 'react-icons/si';
-import { BiLogoGithub } from 'react-icons/bi';
+import { SiLeetcode } from "react-icons/si";
+import { BiLogoGithub } from "react-icons/bi";
 
 type LeetCodeData = {
-  totalSolved: number,
-  totalQuestions: number,
-  easySolved: number,
-  totalEasy: number,
-  mediumSolved: number,
-  totalMedium: number,
-  hardSolved: number,
-  totalHard: number,
-}
+  totalSolved: number;
+  totalQuestions: number;
+  easySolved: number;
+  totalEasy: number;
+  mediumSolved: number;
+  totalMedium: number;
+  hardSolved: number;
+  totalHard: number;
+};
 
 type GithubData = {
-  publicRepos: number,
+  publicRepos: number;
   // repoStars: number,
   // repoLanguage: string,
-}
+};
 
 const Dashboard = () => {
   const [leetCodeUser, setLeetCodeUser] = useState("");
-  const [leetCodeContents, setLeetCodeContents] = useState<LeetCodeData | null>(null);
+  const [leetCodeContents, setLeetCodeContents] = useState<LeetCodeData | null>(
+    null
+  );
   const [githubUser, setGithubUser] = useState("");
   const [githubContents, setGithubContents] = useState<GithubData | null>(null);
-
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,11 +47,10 @@ const Dashboard = () => {
   };
 
   // TODO: Loop through all repos: count stars and grab language
-  // https://api.github.com/users/j4yyyeth/repos 
-
+  // https://api.github.com/users/j4yyyeth/repos
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <form onSubmit={handleSubmit}>
         <label>Enter Leetcode User:</label>
         <input
@@ -69,17 +69,29 @@ const Dashboard = () => {
         </button>
       </form>
       <h1>Dashboard</h1>
-      <div className="p-5 h-40 w-full">
-        <h1>LEETCODE:</h1>
-        <SiLeetcode size={50} />
-        {leetCodeContents && JSON.stringify(leetCodeContents)}
+      <div className="p-5 max-h-screen w-screen">
+      <h1>LEETCODE:</h1>
+      <SiLeetcode size={50} />
+      <div className="max-h-screen overflow-auto">
+        {leetCodeContents && (
+          <pre className="whitespace-pre-wrap">
+            {JSON.stringify(leetCodeContents, null, 2)}
+          </pre>
+        )}
       </div>
-      <div className="p-5 h-40 w-full">
-        <h1>GITHUB:</h1>
-        < BiLogoGithub size={50} />
-        {githubContents && JSON.stringify(githubContents)}
+    </div>
+    <div className="p-5 max-h-screen w-screen">
+      <h1>GITHUB:</h1>
+      <BiLogoGithub size={50} />
+      <div className="max-h-screen overflow-auto">
+        {githubContents && (
+          <pre className="whitespace-pre-wrap">
+            {JSON.stringify(githubContents, null, 2)}
+          </pre>
+        )}
       </div>
-    </>
+    </div>
+    </div>
   );
 };
 

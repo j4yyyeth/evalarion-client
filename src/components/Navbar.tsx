@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import ThemeBtn from "./ThemeBtn";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-blue-500 p-4 w-full">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-white text-2xl font-semibold">
           Logo
@@ -65,6 +66,7 @@ const Navbar = () => {
             )}
           </button>
         </div>
+        <ThemeBtn />
       </div>
       {isOpen && (
         <div className="md:hidden mt-2">

@@ -15,7 +15,6 @@ const SignIn = () => {
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("FORM: ", form);
     setForm({
       email: "",
       password: "",
@@ -29,6 +28,7 @@ const SignIn = () => {
           name="email"
           value={form.email}
           placeholder="Email"
+          required
           onChange={handleChange}
         ></input>
         <input
@@ -36,6 +36,7 @@ const SignIn = () => {
           name="password"
           value={form.password}
           placeholder="Password"
+          required
           onChange={handleChange}
         ></input>
         <button type="submit">Enter</button>
