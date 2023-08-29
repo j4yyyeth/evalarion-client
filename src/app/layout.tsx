@@ -2,8 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-// import ThemeContextProvider from "@/contexts/themeContext";
-import Theme from "@/providers/Theme";
 import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,12 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light transition-all duration-300" style={{colorScheme: "light"}}>
-      <body className={inter.className}>
-        <Theme>
-          <Navbar />
-          {children}
-        </Theme>
+    <html lang="en">
+      <body className={inter.className} id="body">
+        <Navbar />
+        {children}
       </body>
     </html>
   );

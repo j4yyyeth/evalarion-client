@@ -1,10 +1,6 @@
-"use client"
-
 import Link from "next/link";
-import { useThemeContext } from "@/contexts/themeContext";
 
 const Home = () => {
-  const { theme } = useThemeContext();
   return (
     <div>
       <h1>Home Page</h1>

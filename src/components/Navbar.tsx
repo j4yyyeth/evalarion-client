@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import ThemeBtn from "./ThemeBtn";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +65,6 @@ const Navbar = () => {
             )}
           </button>
         </div>
-        <ThemeBtn />
       </div>
       {isOpen && (
         <div className="md:hidden mt-2">

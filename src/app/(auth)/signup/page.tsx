@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -13,12 +14,17 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, form);
+    } catch (err) {
+      console.log(err);
+    }
     setForm({
       email: "",
       password: "",
-    })
+    });
   };
   return (
     <>
