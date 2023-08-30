@@ -63,14 +63,30 @@ const SelectLanguages = ({ endpoint }: { endpoint: string }) => {
   const [languages, setLanguages] = useState<StateOption | []>([]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const languageArr = ["HTML", "CSS", "Javascript", "Typescript", "Python", "Java", "PHP", "GO", "Swift", "Ruby", "Rust", "C", "C++", "C#", "SQL"];
+    const languageArr = [
+      "HTML",
+      "CSS",
+      "Javascript",
+      "Typescript",
+      "Python",
+      "Java",
+      "PHP",
+      "GO",
+      "Swift",
+      "Ruby",
+      "Rust",
+      "C",
+      "C++",
+      "C#",
+      "SQL",
+    ];
     console.log(languages);
     //@ts-ignore
-    if (languageArr.includes(languages)) {
-      console.log("YES! The languages selected DO contain a valid language");
-    } else {
-      console.log("NO! The languages selected DO NOT contain a valid language");
-    }
+    languages.forEach((e) => {
+      if (!languageArr.includes(e.label)) {
+        return null;
+      }
+    });
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`,
