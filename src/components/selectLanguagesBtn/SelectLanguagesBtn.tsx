@@ -59,7 +59,7 @@ const colourStyles: StylesConfig<LanguageOption, true> = {
   }),
 };
 
-const SelectLanguagesBtn = ({endpoint}: {endpoint: string}) => {
+const SelectLanguagesBtn = ({ endpoint }: { endpoint: string }) => {
   const [languages, setLanguages] = useState<StateOption | []>([]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

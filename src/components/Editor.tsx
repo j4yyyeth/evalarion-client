@@ -42,7 +42,7 @@ const Editor = () => {
       };
       console.log(codeData);
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/code-block`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/add-code-block`,
         codeData
       );
     } catch (err) {
@@ -56,7 +56,7 @@ const Editor = () => {
       <div className="p-20">
         <AceEditor
           height="500px"
-          width="500px"
+          width="700px"
           mode={language}
           theme="monokai"
           onChange={handleCodeChange}
