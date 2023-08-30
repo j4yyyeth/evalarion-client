@@ -12,7 +12,9 @@ import { useState, FormEvent } from "react";
 import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { BiLogoGithub } from "react-icons/bi";
-import SelectLanguagesBtn from "@/components/selectLanguagesBtn/languages";
+import SelectLanguagesBtn from "@/components/selectLanguagesBtn/SelectLanguagesBtn";
+import AddProject from "@/components/addProject";
+import AddLink from "@/components/AddLink";
 
 type LeetCodeData = {
   totalSolved: number;
@@ -57,29 +59,41 @@ const Dashboard = () => {
   // https://api.github.com/users/j4yyyeth/repos
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <form onSubmit={handleSubmit}>
-        <label>Enter Leetcode User:</label>
-        <input
-          name="leetCodeUser"
-          onChange={(e) => setLeetCodeUser(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        ></input>
-        <label>Enter Github User:</label>
-        <input
-          name="githubUser"
-          onChange={(e) => setGithubUser(e.target.value)}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        ></input>
-        <button type="submit" className="bg-blue-500 text-white p-2 mt-5">
+    <div className="flex flex-col justify-center items-center space-y-6 p-8">
+      <h1 className="text-3xl font-semibold">Dashboard</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-2">
+          <label htmlFor="leetCodeUser" className="text-lg font-semibold">
+            Enter Leetcode User:
+          </label>
+          <input
+            type="text"
+            id="leetCodeUser"
+            name="leetCodeUser"
+            onChange={(e) => setLeetCodeUser(e.target.value)}
+            className="input-field"
+          />
+        </div>
+        <div className="flex flex-col space-y-2">
+          <label htmlFor="githubUser" className="text-lg font-semibold">
+            Enter Github User:
+          </label>
+          <input
+            type="text"
+            id="githubUser"
+            name="githubUser"
+            onChange={(e) => setGithubUser(e.target.value)}
+            className="input-field"
+          />
+        </div>
+        <button type="submit" className="btn-primary">
           Enter
         </button>
       </form>
-      <h1>Dashboard</h1>
-      <div className="p-5 max-h-screen w-screen">
-        <h1>LEETCODE:</h1>
+      <div className="dashboard-section">
+        <h1 className="text-2xl font-semibold">LEETCODE:</h1>
         <SiLeetcode size={50} />
-        <div className="max-h-screen overflow-auto">
+        <div className="max-h-80 overflow-y-auto bg-gray-100 rounded-lg p-4">
           {leetCodeContents && (
             <pre className="whitespace-pre-wrap">
               {JSON.stringify(leetCodeContents, null, 2)}
@@ -87,10 +101,10 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <div className="p-5 max-h-screen w-screen">
-        <h1>GITHUB:</h1>
+      <div className="dashboard-section">
+        <h1 className="text-2xl font-semibold">GITHUB:</h1>
         <BiLogoGithub size={50} />
-        <div className="max-h-screen overflow-auto">
+        <div className="max-h-80 overflow-y-auto bg-gray-100 rounded-lg p-4">
           {githubContents && (
             <pre className="whitespace-pre-wrap">
               {JSON.stringify(githubContents, null, 2)}
@@ -98,7 +112,9 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <SelectLanguagesBtn />
+      <SelectLanguagesBtn endpoint="users/add-language-test" />
+      <AddProject />
+      <AddLink />
     </div>
   );
 };

@@ -59,14 +59,14 @@ const colourStyles: StylesConfig<LanguageOption, true> = {
   }),
 };
 
-const SelectLanguagesBtn = () => {
+const SelectLanguagesBtn = ({endpoint}: {endpoint: string}) => {
   const [languages, setLanguages] = useState<StateOption | []>([]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(languages);
     try {
       await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/add-language-test`,
+        `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`,
         languages
       );
     } catch (err) {
@@ -82,6 +82,7 @@ const SelectLanguagesBtn = () => {
         styles={colourStyles}
         onChange={(selected: any) => setLanguages(selected)}
         value={languages}
+        required
       />
       <button type="submit">Submit</button>
     </form>
