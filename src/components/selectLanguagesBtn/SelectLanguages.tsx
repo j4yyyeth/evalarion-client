@@ -59,11 +59,18 @@ const colourStyles: StylesConfig<LanguageOption, true> = {
   }),
 };
 
-const SelectLanguagesBtn = ({ endpoint }: { endpoint: string }) => {
+const SelectLanguages = ({ endpoint }: { endpoint: string }) => {
   const [languages, setLanguages] = useState<StateOption | []>([]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const languageArr = ["HTML", "CSS", "Javascript", "Typescript", "Python", "Java", "PHP", "GO", "Swift", "Ruby", "Rust", "C", "C++", "C#", "SQL"];
     console.log(languages);
+    //@ts-ignore
+    if (languageArr.includes(languages)) {
+      console.log("YES! The languages selected DO contain a valid language");
+    } else {
+      console.log("NO! The languages selected DO NOT contain a valid language");
+    }
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`,
@@ -89,4 +96,4 @@ const SelectLanguagesBtn = ({ endpoint }: { endpoint: string }) => {
   );
 };
 
-export default SelectLanguagesBtn;
+export default SelectLanguages;

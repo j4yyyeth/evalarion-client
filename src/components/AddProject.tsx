@@ -1,4 +1,4 @@
-import SelectLanguagesBtn from "./selectLanguagesBtn/SelectLanguagesBtn";
+import SelectLanguages from "./selectLanguagesBtn/SelectLanguages";
 
 const AddProject = () => {
   return (
@@ -11,7 +11,7 @@ const AddProject = () => {
           required
         ></input>
       </form>
-      <SelectLanguagesBtn endpoint="add-project-test" />
+      <SelectLanguages endpoint="add-project-test" />
     </>
   );
 };
