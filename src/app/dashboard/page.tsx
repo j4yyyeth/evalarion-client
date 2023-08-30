@@ -15,7 +15,6 @@ import { BiLogoGithub } from "react-icons/bi";
 import SelectLanguagesBtn from "@/components/selectLanguagesBtn/SelectLanguagesBtn";
 import AddProject from "@/components/AddProject";
 import AddLink from "@/components/AddLink";
-// import AddCodeBlock from "@/components/AddCodeBlock";
 import Editor from "@/components/Editor";
 
 type LeetCodeData = {
@@ -122,7 +121,6 @@ const Dashboard = () => {
       <AddLink />
       <br></br>
       <h1>Add Code Block:</h1>
-      {/* <AddCodeBlock /> */}
       <Editor />
     </div>
   );
