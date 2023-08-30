@@ -61,25 +61,25 @@ const colourStyles: StylesConfig<LanguageOption, true> = {
 
 const SelectLanguages = ({ endpoint }: { endpoint: string }) => {
   const [languages, setLanguages] = useState<StateOption | []>([]);
+  const languageArr = [
+    "HTML",
+    "CSS",
+    "Javascript",
+    "Typescript",
+    "Python",
+    "Java",
+    "PHP",
+    "GO",
+    "Swift",
+    "Ruby",
+    "Rust",
+    "C",
+    "C++",
+    "C#",
+    "SQL",
+  ];
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const languageArr = [
-      "HTML",
-      "CSS",
-      "Javascript",
-      "Typescript",
-      "Python",
-      "Java",
-      "PHP",
-      "GO",
-      "Swift",
-      "Ruby",
-      "Rust",
-      "C",
-      "C++",
-      "C#",
-      "SQL",
-    ];
     console.log(languages);
     //@ts-ignore
     languages.forEach((e) => {
