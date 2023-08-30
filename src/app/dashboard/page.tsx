@@ -12,7 +12,7 @@ import { useState, useEffect, FormEvent } from "react";
 import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { BiLogoGithub } from "react-icons/bi";
-import Select from "react-select";
+import SelectLanguagesBtn from "@/components/selectLanguagesBtn/languages";
 
 type LeetCodeData = {
   totalSolved: number;
@@ -61,8 +61,8 @@ const Dashboard = () => {
   const options = [
     { value: "html", label: "HTML" },
     { value: "css", label: "CSS" },
-    { value: "javascript", label: "JAVASCRIPT" },
-    { value: "python", label: "PYTHON" },
+    { value: "javascript", label: "Javascript" },
+    { value: "python", label: "Python" },
   ];
 
   // TODO: Loop through all repos: count stars and grab language
@@ -110,19 +110,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      <form
-        onSubmit={handleLanguageSubmit}
-        className="p-5 max-h-screen w-screen"
-      >
-        {/* <h1>LANGUAGES</h1>
-        <select name="language">
-          <option value="HTML">HTML</option>
-          <option value="CSS">CSS</option>
-          <option value="Javascript">JavaScript</option>
-        </select>
-        <button type="submit">Submit</button> */}
-        <Select options={options} />
-      </form>
+      <SelectLanguagesBtn />
     </div>
   );
 };
