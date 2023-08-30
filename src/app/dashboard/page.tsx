@@ -13,8 +13,10 @@ import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { BiLogoGithub } from "react-icons/bi";
 import SelectLanguagesBtn from "@/components/selectLanguagesBtn/SelectLanguagesBtn";
-import AddProject from "@/components/addProject";
+import AddProject from "@/components/AddProject";
 import AddLink from "@/components/AddLink";
+// import AddCodeBlock from "@/components/AddCodeBlock";
+import Editor from "@/components/Editor";
 
 type LeetCodeData = {
   totalSolved: number;
@@ -113,8 +115,15 @@ const Dashboard = () => {
         </div>
       </div>
       <SelectLanguagesBtn endpoint="users/add-language-test" />
+      <h1>Add Project:</h1>
       <AddProject />
+      <br></br>
+      <h1>Add Link:</h1>
       <AddLink />
+      <br></br>
+      <h1>Add Code Block:</h1>
+      {/* <AddCodeBlock /> */}
+      <Editor />
     </div>
   );
 };
