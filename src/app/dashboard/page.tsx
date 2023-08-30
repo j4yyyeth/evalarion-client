@@ -8,7 +8,7 @@ TODO:
 
 */
 
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { BiLogoGithub } from "react-icons/bi";
@@ -52,18 +52,6 @@ const Dashboard = () => {
     setGithubContents(githubResults.data);
     console.log(githubResults.data);
   };
-
-  const handleLanguageSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("FORM SUBMITTED");
-  };
-
-  const options = [
-    { value: "html", label: "HTML" },
-    { value: "css", label: "CSS" },
-    { value: "javascript", label: "Javascript" },
-    { value: "python", label: "Python" },
-  ];
 
   // TODO: Loop through all repos: count stars and grab language
   // https://api.github.com/users/j4yyyeth/repos

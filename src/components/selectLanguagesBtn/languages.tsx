@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import chroma from "chroma-js";
-
-import { LanguageOption, languageOptions } from "./data";
+import axios from "axios";
+import { LanguageOption, languageOptions, StateOption } from "./data";
 import Select, { StylesConfig } from "react-select";
 
 const colourStyles: StylesConfig<LanguageOption, true> = {
@@ -58,13 +59,33 @@ const colourStyles: StylesConfig<LanguageOption, true> = {
   }),
 };
 
-const SelectLanguagesBtn = () => (
-  <Select
-    closeMenuOnSelect={false}
-    isMulti
-    options={languageOptions}
-    styles={colourStyles}
-  />
-);
+const SelectLanguagesBtn = () => {
+  const [languages, setLanguages] = useState<StateOption | []>([]);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(languages);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/add-language-test`,
+        languages
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <Select
+        closeMenuOnSelect={false}
+        isMulti
+        options={languageOptions}
+        styles={colourStyles}
+        onChange={(selected: any) => setLanguages(selected)}
+        value={languages}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
 
 export default SelectLanguagesBtn;
