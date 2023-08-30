@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import chroma from "chroma-js";
 
-import { ColourOption, colourOptions } from "./data";
+import { LanguageOption, languageOptions } from "./data";
 import Select, { StylesConfig } from "react-select";
 
-const colourStyles: StylesConfig<ColourOption, true> = {
+const colourStyles: StylesConfig<LanguageOption, true> = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     const color = chroma(data.color);
@@ -61,9 +61,8 @@ const colourStyles: StylesConfig<ColourOption, true> = {
 const SelectLanguagesBtn = () => (
   <Select
     closeMenuOnSelect={false}
-    defaultValue={[colourOptions[0], colourOptions[1]]}
     isMulti
-    options={colourOptions}
+    options={languageOptions}
     styles={colourStyles}
   />
 );
