@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-const Navbar = () => {
+const NavbarMain = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -92,4 +92,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarMain;

@@ -17,6 +17,7 @@ import SelectLanguages from "@/components/selectLanguagesBtn/SelectLanguages";
 import AddProject from "@/components/AddProject";
 import AddLink from "@/components/AddLink";
 import Editor from "@/components/Editor";
+import NavbarDashboard from "@/components/navbars/NavbarDashboard";
 
 type LeetCodeData = {
   totalSolved: number;
@@ -60,6 +61,8 @@ const Dashboard = () => {
   // TODO: Loop through all repos: count stars and grab language
   // https://api.github.com/users/j4yyyeth/repos
   return (
+    <>
+    <NavbarDashboard />
     <div className="flex flex-col justify-center items-center space-y-6 p-8">
       <div className="border border-gray-400 p-4 rounded-md">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
@@ -152,6 +155,7 @@ const Dashboard = () => {
         <Editor />
       </div>
     </div>
+    </>
   );
 };
 
