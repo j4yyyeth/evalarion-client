@@ -10,6 +10,7 @@ const User = ({
 }) => {
   const [userData, setUserData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const fetchData = async () => {
     try {
@@ -21,7 +22,8 @@ const User = ({
       setUserData(data);
       setLoading(false);
     } catch (err) {
-      console.error("Error Dataing user data:", err);
+      setLoading(false);
+      setError("User not found");
     }
   }
   useEffect(() => {
@@ -36,13 +38,14 @@ const User = ({
           <h1>User Data</h1>
           <div>
             <p>ID: {id}</p>
-            <p>Email: {userData.email}</p>
-            {userData.codeSnippets.map((e: any, i: number) => {
+            <p>Email: {userData?.email}</p>
+            {userData?.codeSnippets.map((e: any, i: number) => {
               return <p key={i}>{e.codeBlock}</p>;
             })}
           </div>
         </div>
       )}
+      {error && <div>{error}</div>}
     </>
   )
 };
