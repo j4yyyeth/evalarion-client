@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { post } from "@/services/authService";
+import { useAuthContext } from "@/contexts/authContext";
 
 const SignUp = () => {
+  const { authenticateUser } = useAuthContext();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -17,9 +21,13 @@ const SignUp = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, form);
+      const res = await post("/auth/signup", form);
+      console.log("NOW NAVIGATE TO DASHBOARD");
+      localStorage.setItem("authToken", res.data.token);
     } catch (err) {
       console.log(err);
+    } finally {
+      authenticateUser();
     }
     setForm({
       email: "",
