@@ -6,37 +6,58 @@ import { usePathname } from "next/navigation";
 
 const NavbarMain = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
   const pathname = usePathname();
   const pagesWithoutNavbar = ["/dashboard", "/signup", "/signin"];
   const shouldShowNavbar = !pagesWithoutNavbar.includes(pathname);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   if (!shouldShowNavbar) {
     return null;
   }
   return (
-    <nav className="bg-blue-500 p-4 w-full">
+    <nav
+      className={`${
+        isSticky ? "bg-white shadow-md" : "bg-white shadow-sm"
+      } p-4 w-full fixed top-0 left-0 transition-all duration-300 ease-in-out`}
+    >
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-white text-2xl font-semibold">
+        <Link href="/" className="text-blue-500 text-2xl font-semibold">
           Logo
         </Link>
         <div className="hidden md:flex space-x-4">
-          <Link href="/about" className="text-white hover:text-gray-300">
+          <Link href="/about" className="text-blue-500 hover:text-gray-500">
             About
           </Link>
-          <Link href="/contact" className="text-white hover:text-gray-300">
+          <Link href="/contact" className="text-blue-500 hover:text-gray-500">
             Contact
           </Link>
-          <Link href="/signin" className="text-white hover:text-gray-300">
+          <Link href="/signin" className="text-blue-500 hover:text-gray-500">
             Sign In
           </Link>
         </div>
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleNavbar}
-            className="text-white focus:outline-none focus:text-gray-300"
+            className="text-blue-500 focus:outline-none focus:text-gray-500"
           >
             {isOpen ? (
               <svg
@@ -76,19 +97,19 @@ const NavbarMain = () => {
         <div className="md:hidden mt-2">
           <Link
             href="/about"
-            className="block text-white hover:text-gray-300 px-4 py-2"
+            className="block text-blue-500 hover:text-gray-500 px-4 py-2"
           >
             About
           </Link>
           <Link
             href="/contact"
-            className="block text-white hover:text-gray-300 px-4 py-2"
+            className="block text-blue-500 hover:text-gray-500 px-4 py-2"
           >
             Contact
           </Link>
           <Link
             href="/signin"
-            className="block text-white hover:text-gray-300 px-4 py-2"
+            className="block text-blue-500 hover:text-gray-500 px-4 py-2"
           >
             Sign In
           </Link>
