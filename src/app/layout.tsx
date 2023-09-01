@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { usePathname } from "next/navigation";
 
 import NavbarMain from "@/components/navbars/NavbarMain";
 
@@ -17,14 +16,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // cannot be accesses on the server side
-  const pathname = usePathname();
-  const pagesWithoutNavbar = ["/dashboard", "/signup", "/signin"];
-  const shouldShowNavbar = !pagesWithoutNavbar.includes(pathname);
   return (
     <html lang="en">
       <body className={inter.className} id="body">
-        {shouldShowNavbar && <NavbarMain />}
+        <NavbarMain />
         {children}
       </body>
     </html>

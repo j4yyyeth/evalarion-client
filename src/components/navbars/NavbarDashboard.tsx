@@ -2,31 +2,49 @@ import Link from "next/link";
 
 const NavbarDashboard = () => {
   return (
-    <nav className="bg-blue-500 p-4 h-screen w-1/4 fixed top-0 left-0">
+    <nav className="bg-blue-500 p-4 h-screen w-0.5/4 fixed top-0 left-0 flex flex-col">
       <div className="container mx-auto">
         <Link
-          href="/dashboard"
+          href="/"
           className="block text-white text-2xl font-semibold mb-4 hover:text-gray-300"
         >
           Home
         </Link>
         <Link
-          href="/about"
+          href="/github"
           className="block text-white text-lg mb-4 hover:text-gray-300"
         >
-          About
+          Github
         </Link>
         <Link
-          href="/contact"
+          href="/leetcode"
           className="block text-white text-lg mb-4 hover:text-gray-300"
         >
-          Contact
+          Leetcode
         </Link>
         <Link
-          href="/signin"
+          href="/languages"
+          className="block text-white text-lg mb-4 hover:text-gray-300"
+        >
+          My Languages
+        </Link>
+        <Link
+          href="/projects"
+          className="block text-white text-lg mb-4 hover:text-gray-300"
+        >
+          My Projects
+        </Link>
+        <Link
+          href="/code"
+          className="block text-white text-lg mb-4 hover:text-gray-300"
+        >
+          My Code Snippets
+        </Link>
+        <Link
+          href="/links"
           className="block text-white text-lg hover:text-gray-300"
         >
-          Sign In
+          My Developer Links
         </Link>
       </div>
     </nav>

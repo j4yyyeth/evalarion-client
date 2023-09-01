@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NavbarMain = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,12 @@ const NavbarMain = () => {
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-
+  const pathname = usePathname();
+  const pagesWithoutNavbar = ["/dashboard", "/signup", "/signin"];
+  const shouldShowNavbar = !pagesWithoutNavbar.includes(pathname);
+  if (!shouldShowNavbar) {
+    return null;
+  }
   return (
     <nav className="bg-blue-500 p-4 w-full">
       <div className="container mx-auto flex justify-between items-center">
