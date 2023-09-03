@@ -5,6 +5,7 @@ import chroma from "chroma-js";
 import axios from "axios";
 import { LanguageOption, languageOptions, StateOption } from "./data";
 import Select, { StylesConfig } from "react-select";
+import { post } from "@/services/authService";
 
 const colourStyles: StylesConfig<LanguageOption, true> = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),
@@ -88,10 +89,8 @@ const SelectLanguages = ({ endpoint }: { endpoint: string }) => {
       }
     });
     try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`,
-        languages
-      );
+      const res = await post(`/${endpoint}`, languages);
+      console.log("Good post with authentication");
     } catch (err) {
       console.log(err);
     }

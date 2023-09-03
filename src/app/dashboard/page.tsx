@@ -132,7 +132,7 @@ const Dashboard = () => {
 
       <div className="border border-gray-400 p-4 rounded-md">
         <h1>Add Languages:</h1>
-        <SelectLanguages endpoint="users/add-language-test" /> {/* add-languages */}
+        <SelectLanguages endpoint="users/add-language-test" />
       </div>
 
       <div className="border border-gray-400 p-4 rounded-md">
