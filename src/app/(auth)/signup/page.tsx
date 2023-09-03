@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { post } from "@/services/authService";
 import { useAuthContext } from "@/contexts/authContext";
 
@@ -60,3 +59,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+

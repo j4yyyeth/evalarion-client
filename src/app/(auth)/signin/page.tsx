@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import { post } from "@/services/authService";
+import { useAuthContext } from "@/contexts/authContext";
 
 const SignIn = () => {
+  const { authenticateUser } = useAuthContext();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -16,7 +19,15 @@ const SignIn = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/signin`, form);
+    try {
+      const res = await post("/auth/signin", form);
+      console.log("NOW NAVIGATE TO DASHBOARD");
+      localStorage.setItem("authToken", res.data.token);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      authenticateUser();
+    }
     setForm({
       email: "",
       password: "",
@@ -41,7 +52,7 @@ const SignIn = () => {
           required
           onChange={handleChange}
         ></input>
-        <button type="submit">Enter</button>
+        <button type="submit">Sign In</button>
       </form>
     </>
   );
