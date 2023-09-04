@@ -54,6 +54,10 @@ const SignUp = () => {
         ></input>
         <button type="submit">Sign Up</button>
       </form>
+      <p>--- OR ---</p>
+      <button>Sign Up With Google</button>
+      <br />
+      <button>Sign Up With Github</button>
     </>
   );
 };
