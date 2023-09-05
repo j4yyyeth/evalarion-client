@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import chroma from "chroma-js";
-import axios from "axios";
 import { LanguageOption, languageOptions, StateOption } from "./data";
 import Select, { StylesConfig } from "react-select";
 import { post } from "@/services/authService";

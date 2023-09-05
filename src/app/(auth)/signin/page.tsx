@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { post } from "@/services/authService";
 import { useAuthContext } from "@/contexts/authContext";
+import { useLoadingContext } from "@/contexts/loadingContext";
+import { redirect } from "next/navigation";
 
 const SignIn = () => {
   const { authenticateUser } = useAuthContext();
+  const { user } = useLoadingContext();
+  useEffect(() => {
+    if (user) {
+      redirect("/dashboard");
+    }
+  }, [user]);
 
   const [form, setForm] = useState({
     email: "",
@@ -21,8 +29,8 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const res = await post("/auth/signin", form);
-      console.log("NOW NAVIGATE TO DASHBOARD");
       localStorage.setItem("authToken", res.data.token);
+      redirect("/dashboard");
     } catch (err) {
       console.log(err);
     } finally {

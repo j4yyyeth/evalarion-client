@@ -73,12 +73,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 };
 
 export function useAuthContext() {
-    const context = React.useContext(AuthContext);
-    if (!context) {
-      throw new Error("UseAuth context must be provided");
-    }
-    return context;
+  const context = React.useContext(AuthContext);
+  if (!context) {
+    throw new Error("UseAuthContext must be provided");
   }
+  return context;
+}
 
 export { AuthContext, AuthProvider };
-

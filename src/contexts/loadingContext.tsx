@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, createContext, ReactNode } from "react";
+import React, { useState, createContext, ReactNode } from "react";
 import { get } from "../services/authService";
 import { User } from "./authContext";
 
@@ -49,5 +49,13 @@ const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
     </LoadingContext.Provider>
   );
 };
+
+export function useLoadingContext() {
+  const context = React.useContext(LoadingContext);
+  if (!context) {
+    throw new Error("UseLoadingContext must be provided");
+  }
+  return context;
+}
 
 export { LoadingContext, LoadingProvider };
