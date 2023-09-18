@@ -21,7 +21,7 @@ import NavbarDashboard from "@/components/navbars/NavbarDashboard";
 import { useLoadingContext } from "@/contexts/loadingContext";
 import { useRouter } from "next/navigation";
 import GithubForm from "@/components/GithubForm";
-import LeetCodeForm from "@/components/leetCodeForm";
+import LeetCodeForm from "@/components/LeetCodeForm";
 
 type LeetCodeData = {
   totalSolved: number;
