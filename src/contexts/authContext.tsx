@@ -13,10 +13,30 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
+interface ProjectIdea {
+  title: string;
+  description: string;
+  techStack: string[];
+}
+
+interface CodeSnippet {
+  codeBlock: string;
+  language: string;
+  title: string | null;
+  description: string | null;
+}
+
 export interface User {
   email: string;
   password: string;
   id: number;
+  languages: string[];
+  languagesToLearn: string[];
+  projectIdeas: ProjectIdea;
+  codeSnippets: CodeSnippet;
+  githubUsername: string | null;
+  leetCodeUsername: string | null;
+  links: string[];
 }
 
 interface LoadingContextProps {
