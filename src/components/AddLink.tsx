@@ -1,6 +1,12 @@
+"use client";
+
+import { useState } from "react";
+import axios from "axios";
+
 const AddLink = () => {
-  // value and onChange -->
-  //
+  const handleSubmit = async () => {
+    const res = await axios.post("");
+  };
   return (
     <form>
       <input type="url" name="url" placeholder="Enter URL" required></input>

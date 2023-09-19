@@ -11,8 +11,6 @@ TODO:
 
 //
 import { useState, FormEvent, useEffect } from "react";
-import { SiLeetcode } from "react-icons/si";
-import { BiLogoGithub } from "react-icons/bi";
 import SelectLanguages from "@/components/selectLanguagesBtn/SelectLanguages";
 import AddProject from "@/components/AddProject";
 import AddLink from "@/components/AddLink";

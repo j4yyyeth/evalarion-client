@@ -4,15 +4,20 @@ import { useState } from "react";
 import axios from "axios";
 
 const GithubForm = () => {
-  const [githubContents, setGithubContents] = useState("");
   const [githubUser, setGithubUser] = useState("");
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const githubResults = await axios.get(
-      `https://api.github.com/users/${githubUser}`
-    );
-    setGithubContents(githubResults.data);
-    console.log(githubResults.data);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/add-github`,
+        githubUser
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    // const githubResults = await axios.get(
+    //   `https://api.github.com/users/${githubUser}`
+    // );
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">

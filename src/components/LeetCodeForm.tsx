@@ -4,17 +4,20 @@ import { useState } from "react";
 import axios from "axios";
 
 const LeetCodeForm = () => {
-  const [leetCodeContents, setLeetCodeContents] = useState("");
   const [leetCodeUser, setLeetCodeUser] = useState("");
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const leetResults = await axios.get(
-      `https://leetcode-stats-api.herokuapp.com/${leetCodeUser}`
-    );
-    console.log(leetResults);
-    setLeetCodeContents(leetResults.data);
-    // for some reason have to enter twice .. figure out
-    console.log(".DATA: ", leetResults.data);
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/add-leetcode`,
+        leetCodeUser
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    // const leetResults = await axios.get(
+    //   `https://leetcode-stats-api.herokuapp.com/${leetCodeUser}`
+    // );
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
