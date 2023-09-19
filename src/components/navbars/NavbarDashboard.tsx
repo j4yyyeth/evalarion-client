@@ -31,7 +31,7 @@ const NavbarDashboard = () => {
         <span className="text-md font-medium">Projects</span>
       </Link>
       <Link
-        href="/code"
+        href="/codeblocks"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <BiCodeBlock className="h-9 w-9" />

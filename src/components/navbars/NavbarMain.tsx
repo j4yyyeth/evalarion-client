@@ -13,7 +13,16 @@ const NavbarMain = () => {
   };
 
   const pathname = usePathname();
-  const pagesWithoutNavbar = ["/dashboard", "/signup", "/signin"];
+  const pagesWithoutNavbar = [
+    "/dashboard",
+    "/signup",
+    "/signin",
+    "/languages",
+    "/projects",
+    "/codeblocks",
+    "/github",
+    "/leetcode",
+  ];
   const shouldShowNavbar = !pagesWithoutNavbar.includes(pathname);
 
   useEffect(() => {

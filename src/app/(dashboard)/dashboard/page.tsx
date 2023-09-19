@@ -40,12 +40,6 @@ type GithubData = {
 
 const Dashboard = () => {
   const { user } = useLoadingContext();
-  const [leetCodeUser, setLeetCodeUser] = useState("");
-  const [leetCodeContents, setLeetCodeContents] = useState<LeetCodeData | null>(
-    null
-  );
-  const [githubUser, setGithubUser] = useState("");
-  const [githubContents, setGithubContents] = useState<GithubData | null>(null);
 
   const router = useRouter();
   useEffect(() => {
