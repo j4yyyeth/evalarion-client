@@ -17,35 +17,35 @@ const NavbarDashboard = () => {
         <span className="text-md font-medium">Home</span>
       </Link>
       <Link
-        href="/languages"
+        href="/dashboard/languages"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <HiOutlineCode className="h-9 w-9" />
         <span className="text-md font-medium">Languages</span>
       </Link>
       <Link
-        href="/projects"
+        href="/dashboard/projects"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <AiOutlineFundProjectionScreen className="h-9 w-9" />
         <span className="text-md font-medium">Projects</span>
       </Link>
       <Link
-        href="/codeblocks"
+        href="/dashboard/codeblocks"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <BiCodeBlock className="h-9 w-9" />
         <span className="text-md font-medium">Code Blocks</span>
       </Link>
       <Link
-        href="/github"
+        href="/dashboard/github"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <AiFillGithub className="h-9 w-9" />
         <span className="text-md font-medium">GitHub</span>
       </Link>
       <Link
-        href="/leetcode"
+        href="/dashboard/leetcode"
         className="w-full flex items-center space-x-2 hover:bg-gray-800 transition-transform active:bg-gray-100 py-2 px-2 rounded-lg text-gray-200"
       >
         <TbBrandLeetcode className="h-9 w-9" />
