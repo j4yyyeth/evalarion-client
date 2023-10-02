@@ -13,7 +13,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface ProjectIdea {
+interface Project {
   title: string;
   description: string;
   techStack: string[];
@@ -32,8 +32,8 @@ export interface User {
   id: number;
   languages: string[];
   languagesToLearn: string[];
-  projectIdeas: ProjectIdea;
-  codeSnippets: CodeSnippet;
+  projects: Project[];
+  codeSnippets: CodeSnippet[];
   githubUsername: string | null;
   leetCodeUsername: string | null;
   links: string[];

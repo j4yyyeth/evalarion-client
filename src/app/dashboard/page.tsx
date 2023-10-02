@@ -70,23 +70,6 @@ const Dashboard = () => {
           {!user.leetCodeUsername ? <LeetCodeForm /> : <></>}
         </>
         <div className="border border-gray-400 p-4 rounded-md">
-          <h1>Add Languages:</h1>
-          <SelectLanguages endpoint="users/add-language-test" />
-        </div>
-        <div className="border border-gray-400 p-4 rounded-md">
-          <h1>Add Languages to Learn:</h1>
-          <SelectLanguages endpoint="users/add-languages-to-learn" />
-        </div>
-        
-        <div className="border border-gray-400 p-4 rounded-md">
-          <h1>Add Project:</h1>
-          <AddProject />
-        </div>
-        <div className="border border-gray-400 p-4 rounded-md">
-          <h1>Add Link:</h1>
-          <AddLink />
-        </div>
-        <div className="border border-gray-400 p-4 rounded-md">
           <h1>Add Code Block:</h1>
           <Editor />
         </div>
